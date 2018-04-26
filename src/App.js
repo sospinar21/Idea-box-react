@@ -24,6 +24,8 @@ class App extends Component {
     this.addBodyAndTitle = this.addBodyAndTitle.bind(this)
     this.upvoteQuality = this.upvoteQuality.bind(this)
     this.downVoteQuality = this.downVoteQuality.bind(this)
+    this.deleteIdea = this.deleteIdea.bind(this)
+    
   }
 
   addBodyAndTitle (e, title, body) {
@@ -47,22 +49,27 @@ class App extends Component {
     document.getElementById('submitForm').reset()
   }
 
-upvoteQuality (cardId) {
-  console.log('in upvotequality',cardId.quality)
-    if(cardId.quality === 'Swill'){
-      cardId.quality = 'Good'        
+upvoteQuality (e) {
+  let closestLi = e.target.closest('li')
+  let qualityh4 = closestLi.querySelector('#qualityh4')
+  console.log('in upvotequality',qualityh4)
+    if(qualityh4.innerText === 'Swill'){
+      qualityh4.innerText = 'Good'        
     }
-    if(cardId.quality === 'Good'){
-      cardId.quality = 'Excelent'        
+    else if(qualityh4.innerText === 'Good'){
+      qualityh4.innerText = 'Excelent'              
     }
   }
 
 downVoteQuality (e) {
-    if(this.props.quality === 'Excelent'){
-      this.props.quality = 'Good'  
+  let closestLi = e.target.closest('li')
+  let qualityh4 = closestLi.querySelector('#qualityh4')
+
+    if(qualityh4.innerText === 'Excelent'){
+      qualityh4.innerText = 'Good'  
     }
-    if(this.props.quality === 'Good'){
-      this.props.quality = 'Swill'  
+    else if(qualityh4.innerText === 'Good'){
+      qualityh4.innerText = 'Swill'  
     }
   }
 
@@ -72,6 +79,14 @@ downVoteQuality (e) {
     this.setState ({
       ideaList : oldIdeas || []
     })
+  }
+
+  deleteIdea (cardId) {
+    let filteredArray = this.state.ideaList.filter(idea => cardId !== idea.key)
+    this.setState ({
+      ideaList : filteredArray
+    })
+    this.saveToStorage(filteredArray)
   }
 
 
@@ -90,13 +105,15 @@ downVoteQuality (e) {
         <Form 
           addBodyAndTitle = {this.addBodyAndTitle}
         />
-        <Search />
-        
+        <Search 
+           ideaList = {this.state.ideaList}
+        />  
         <CardList 
           idea = {this.idea}
           ideaList = {this.state.ideaList}
           upvoteQuality = {this.upvoteQuality}
           downVoteQuality = {this.downVoteQuality}
+          deleteIdea = {this.deleteIdea}
         />
       </div>
       )
@@ -106,7 +123,9 @@ downVoteQuality (e) {
         <Form 
           addBodyAndTitle = {this.addBodyAndTitle}
         />
-        <Search />
+        <Search 
+           ideaList = {this.state.ideaList}
+        />
       </div>
     );
   }

@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import Card from './Card'
 
-const CardList = ({idea, ideaList,upvoteQuality, downVoteQuality}) => {
+const CardList = ({idea, ideaList,upvoteQuality, downVoteQuality, deleteIdea}) => {
     console.log('inCardlist', idea)
     const cardArray = ideaList.map((ideaCard,index) => {
       return (
@@ -12,6 +12,7 @@ const CardList = ({idea, ideaList,upvoteQuality, downVoteQuality}) => {
             quality = {ideaCard.quality}
             upvoteQuality = {upvoteQuality}
             downVoteQuality = {downVoteQuality}
+            deleteIdea = {deleteIdea}
           />
       )     
   })
