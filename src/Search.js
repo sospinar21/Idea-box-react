@@ -22,9 +22,9 @@ searchInput (event) {
     }) 
 }
     else {
-    for (var i = 0; i < ideasLi.length; i++) {
-        ideasLi[i].style.display = 'block';
-    }
+        for (var i = 0; i < ideasLi.length; i++) {
+            ideasLi[i].style.display = 'block';
+        }
     }
 }  
    

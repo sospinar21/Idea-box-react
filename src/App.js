@@ -49,21 +49,21 @@ class App extends Component {
     document.getElementById('submitForm').reset()
   }
 
-upvoteQuality (e) {
-  let closestLi = e.target.closest('li')
-  let qualityh4 = closestLi.querySelector('#qualityh4')
-  console.log('in upvotequality',qualityh4)
-    if(qualityh4.innerText === 'Swill'){
-      qualityh4.innerText = 'Good'        
+  upvoteQuality (e) {
+    let closestLi = e.target.closest('li')
+    let qualityh4 = closestLi.querySelector('#qualityh4')
+    console.log('in upvotequality',qualityh4)
+      if(qualityh4.innerText === 'Swill'){
+        qualityh4.innerText = 'Good'        
+      }
+      else if(qualityh4.innerText === 'Good'){
+        qualityh4.innerText = 'Excelent'              
+      }
     }
-    else if(qualityh4.innerText === 'Good'){
-      qualityh4.innerText = 'Excelent'              
-    }
-  }
 
-downVoteQuality (e) {
-  let closestLi = e.target.closest('li')
-  let qualityh4 = closestLi.querySelector('#qualityh4')
+  downVoteQuality (e) {
+    let closestLi = e.target.closest('li')
+    let qualityh4 = closestLi.querySelector('#qualityh4')
 
     if(qualityh4.innerText === 'Excelent'){
       qualityh4.innerText = 'Good'  
