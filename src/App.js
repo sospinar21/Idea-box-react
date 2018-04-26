@@ -15,12 +15,15 @@ class App extends Component {
       }
 
       let idea = {
+        key : Date.now(),
         titleInput : '',
         bodyInput : '',
         quality: 'Swill',
       }
 
     this.addBodyAndTitle = this.addBodyAndTitle.bind(this)
+    this.upvoteQuality = this.upvoteQuality.bind(this)
+    this.downVoteQuality = this.downVoteQuality.bind(this)
   }
 
   addBodyAndTitle (e, title, body) {
@@ -28,6 +31,7 @@ class App extends Component {
     console.log(title)
     if(title !== '' || body !== ''){ 
       this.idea = {
+        key : Date.now(),
         titleInput : title,
         bodyInput : body,
         quality: 'Swill'
@@ -39,23 +43,44 @@ class App extends Component {
     this.setState ({
       ideaList : listArray
     })
-  
-    console.log(this.state.ideaList)
+    this.saveToStorage(listArray)
     document.getElementById('submitForm').reset()
-    this.cleanState()
   }
 
-  cleanState () {
-      this.idea = {
-        titleInput : '',
-        bodyInput : '',
-        quality: 'Swill'
-      }
+upvoteQuality (cardId) {
+  console.log('in upvotequality',cardId.quality)
+    if(cardId.quality === 'Swill'){
+      cardId.quality = 'Good'        
+    }
+    if(cardId.quality === 'Good'){
+      cardId.quality = 'Excelent'        
+    }
+  }
+
+downVoteQuality (e) {
+    if(this.props.quality === 'Excelent'){
+      this.props.quality = 'Good'  
+    }
+    if(this.props.quality === 'Good'){
+      this.props.quality = 'Swill'  
+    }
+  }
+
+
+  componentDidMount () {
+    let oldIdeas = JSON.parse(localStorage.getItem('ideaList'))
+    this.setState ({
+      ideaList : oldIdeas || []
+    })
   }
 
 
   handleError () {
 
+  }
+
+  saveToStorage (idealist) {
+    localStorage.setItem('ideaList', JSON.stringify(idealist)); 
   }
 
   render() {

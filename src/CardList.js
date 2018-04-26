@@ -2,14 +2,14 @@ import React, {Component} from 'react'
 import Card from './Card'
 
 const CardList = ({idea, ideaList,upvoteQuality, downVoteQuality}) => {
-    console.log('in cardlist', {idea})
-    const cardArray = ideaList.map((idea,index) => {
+    console.log('inCardlist', idea)
+    const cardArray = ideaList.map((ideaCard,index) => {
       return (
           <Card 
-            title = {idea.titleInput}
-            body = {idea.bodyInput}
-            quality = {idea.quality}
-            key = {index}
+            cardKey = {ideaCard.key}
+            title = {ideaCard.titleInput}
+            body = {ideaCard.bodyInput}
+            quality = {ideaCard.quality}
             upvoteQuality = {upvoteQuality}
             downVoteQuality = {downVoteQuality}
           />
