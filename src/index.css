@@ -1,0 +1,99 @@
+body {
+  font: 0px;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+h1 h2 h3 h4 h5 {
+  margin: 0
+}
+
+input {
+  display: block;
+  height: 6vh;
+}
+
+.submitBox {
+  background-color: #e5f3f2;
+  height: 40vh;
+  width: 100%;
+  margin: auto;
+  padding-top: 7vh;
+}
+
+.titleInput {
+  width: 50%;
+  margin: 2vh auto
+}
+
+.bodyInput {
+  margin: 2vh auto 2vh auto;
+  width: 50%;   
+}
+
+h1 {
+  color: #6D6e71;
+  font-size: 8vh !important;
+  margin: 0  
+}
+
+b {
+  color: #00A79D;
+}
+
+.submitButton {
+  background-color: #00A79D;
+  color: white;
+  width: 50%;
+  height: 7vh;
+}
+
+.submitButton :hover {
+  background-color: #045e55  
+}
+
+.searchDiv {
+  width: 50%;
+  margin: auto;
+}
+
+.searchBox {
+  width: 100%;
+  margin: 3vh auto 3vh auto;
+}
+
+.firstSection {
+  width: 50%;
+  margin: auto;
+  display:flex;
+  justify-content: space-between
+}
+
+.qualitySection {
+  width: 50%;
+  margin: auto;
+  display:flex;
+  justify-content: flex-start;
+}
+
+button {
+  height: 2vh;
+}
+
+h3 {
+  margin: 4vh auto 4vh auto;
+}
+
+.secondSection {
+  width: 50%;
+  margin: auto;
+  height: 9vh;
+  line-height: 3;
+  text-align: left;
+}
+
+.ideaBox {
+  width: 100%;
+  height: 15vh;
+}
